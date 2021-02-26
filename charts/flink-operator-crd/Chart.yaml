@@ -1,0 +1,6 @@
+name: flink-operator-crd
+description: A Helm chart for CRD to the Flink operator
+version: 0.1.0
+appVersion: 0.1.0
+apiVersion: v1
+kubeVersion: ">=1.10.0-0"
