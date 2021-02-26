@@ -24,6 +24,7 @@ The following table lists the configurable parameters of the chart and their def
 | `maxBackoffDuration`                   | The max backoff for exponential retries                      | "30s"                        |
 | `maxErrDuration`                       | The max time to wait on errors                               | "5m"                         |
 | `prometheusMetrics.create`             | Whether to create service monitor and service for Prometheus | `true`                       |
+| `crd.create`                           | Whether to create the CRD                                    | `true`                       |
 | `rbac.create`                          | Whether to create required roles and bindings                | `true`                       |
 | `resourcesRequests.memory`             | Requested memory for the operator deployment                 | 1G                           |
 | `resourcesRequests.cpu`                | Requested CPU for the operator deployment                    | 0.5                          |

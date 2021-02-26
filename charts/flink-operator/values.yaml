@@ -2,6 +2,12 @@ operatorImageName: lyft/flinkk8soperator
 operatorVersion: b5eb19657df91782e51028019e89a7c1badd30d1
 imagePullPolicy: IfNotPresent
 
+crd:
+  create: true
+
+rbac:
+  create: true
+
 prometheusMetrics:
   create: true
 
