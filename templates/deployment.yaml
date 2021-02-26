@@ -44,7 +44,7 @@ spec:
               value: flinkk8soperator
           imagePullPolicy: {{ .Values.imagePullPolicy }}
           ports:
-            - containerPort: 10254
+            - containerPort: {{ .Values.profilerPort }}
           resources:
             requests:
               memory: {{ .Values.resourceRequests.memory }}
