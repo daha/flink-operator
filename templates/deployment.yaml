@@ -18,6 +18,9 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "flink-operator.name" . }}
         app.kubernetes.io/version: {{ .Values.operatorVersion }}
+      annotations:
+        # Reload deployment if configmap.yaml changes
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
     spec:
       serviceAccountName: {{ include "flink-operator.serviceAccountName" . }}
       volumes:
