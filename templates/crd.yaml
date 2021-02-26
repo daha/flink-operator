@@ -23,6 +23,7 @@ spec:
   validation:
     # openAPIV3Schema is the schema for validating custom objects.
     openAPIV3Schema:
+      type: object
       properties:
         spec:
           type: object
@@ -41,6 +42,38 @@ spec:
                     type: string
             serviceAccountName:
               type: string
+            securityContext:
+              type: object
+              properties:
+                fsGroup:
+                  type: integer
+                  minimum: 1
+                  maximum: 65535
+                runAsGroup:
+                  type: integer
+                  minimum: 1
+                  maximum: 65535
+                runAsNonRoot:
+                  type: boolean
+                runAsUser:
+                  type: integer
+                  minimum: 1
+                  maximum: 65535
+                supplementalGroups:
+                  type: array
+                  items:
+                    type: integer
+                    minimum: 1
+                    maximum: 65535
+                sysctls:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      value:
+                        type: string
             jarName:
               type: string
             programArgs:
@@ -57,11 +90,14 @@ spec:
             deleteMode:
               type: string
               enum: [Savepoint, None, ForceCancel]
+            scaleMode:
+              type: string
+              enum: [NewCluster, InPlace]
             allowNonRestoredState:
               type: boolean
             deploymentMode:
               type: string
-              enum: [Dual]
+              enum: [Dual, BlueGreen]
             rpcPort:
               type: integer
               minimum: 1
@@ -90,6 +126,8 @@ spec:
                   type: string
             savepointPath:
               type: string
+            savepointDisabled:
+              type: boolean
             maxCheckpointRestoreAgeSeconds:
               type: integer
               minimum: 1
@@ -103,11 +141,31 @@ spec:
                   type: number
                   minimum: 0
                   maximum: 1
+                systemMemoryFraction:
+                  type: number
+                  minimum: 0
+                  maximum: 1
                 nodeSelector:
                   type: object
                   properties:
                     additionalProperties:
                       type: string
+                tolerations:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      effect:
+                        type: string
+                      key:
+                        type: string
+                      operator:
+                        type: string
+                      tolerationSeconds:
+                        type: integer
+                        format: int64
+                      value:
+                        type: string
                 envConfig:
                   type: object
                   properties:
@@ -230,11 +288,32 @@ spec:
                   type: number
                   minimum: 0
                   maximum: 1
+                systemMemoryFraction:
+                  type: number
+                  minimum: 0
+                  maximum: 1
                 nodeSelector:
                   type: object
                   properties:
                     additionalProperties:
                       type: string
+                tolerations:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      effect:
+                        type: string
+                      key:
+                        type: string
+                      operator:
+                        type: string
+
+                      tolerationSeconds:
+                        type: integer
+                        format: int64
+                      value:
+                        type: string
                 envConfig:
                   type: object
                   properties:

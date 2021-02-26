@@ -1,5 +1,5 @@
 operatorImageName: lyft/flinkk8soperator
-operatorVersion: v0.4.0
+operatorVersion: b5eb19657df91782e51028019e89a7c1badd30d1
 imagePullPolicy: IfNotPresent
 
 rbac:
