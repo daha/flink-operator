@@ -14,7 +14,7 @@ The following table lists the configurable parameters of the chart and their def
 | `flinkJobNamespace`                    | K8s namespace where Flink jobs are to be deployed.           | `default`                    |
 | `limitNamespace`                       | Comma separated list of namespaces that the operator is configured to watch. Empty string by default, which indicates all namespaces will be watched. | ""                           |
 | `resyncPeriod`                         | The resync period for all watchers                           | "30s"                        |
-| `metricsPrefix`                        | Prefix for metrics propagated to prometheus                  | "flinkk8soperator"           |
+| `metricsPrefix`                        | Prefix for metrics propagated to Prometheus                  | "flinkk8soperator"           |
 | `profilerPort`                         | Profiler port                                                | "10254"                      |
 | `ingressUrlFormat`                     | Ingress URL format                                           | ""                           |
 | `useKubectlProxy`                      | Whether to use `kubectl` proxy                               | `false`                      |
@@ -23,6 +23,7 @@ The following table lists the configurable parameters of the chart and their def
 | `baseBackoffDuration`                  | The base backoff for exponential retries                     | "100ms"                      |
 | `maxBackoffDuration`                   | The max backoff for exponential retries                      | "30s"                        |
 | `maxErrDuration`                       | The max time to wait on errors                               | "5m"                         |
+| `prometheusMetrics.create`             | Whether to create service monitor and service for Prometheus | `true`                       |
 | `rbac.create`                          | Whether to create required roles and bindings                | `true`                       |
 | `resourcesRequests.memory`             | Requested memory for the operator deployment                 | 1G                           |
 | `resourcesRequests.cpu`                | Requested CPU for the operator deployment                    | 0.5                          |

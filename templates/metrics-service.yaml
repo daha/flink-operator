@@ -1,0 +1,16 @@
+{{- if .Values.prometheusMetrics.create }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-metrics
+  labels:
+    metrics: "true"
+    release: {{ .Release.Name }}
+spec:
+  ports:
+  - port: {{ .Values.profilerPort }}
+    name: metrics
+  clusterIP: None
+  selector:
+    app.kubernetes.io/name: {{ include "flink-operator.name" . }}
+{{- end }}
